@@ -20,6 +20,4 @@ public class EmployeeController {
     }
 
 
-    //localhost:8080/employee/count
-
 }
