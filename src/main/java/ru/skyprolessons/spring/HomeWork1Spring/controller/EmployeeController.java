@@ -4,7 +4,10 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import ru.skyprolessons.spring.HomeWork1Spring.pojo.Employee;
 import ru.skyprolessons.spring.HomeWork1Spring.service.EmployeeService;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/employee")
@@ -19,5 +22,23 @@ public class EmployeeController {
         return employeeService.getEmployeeCount();
     }
 
+    @GetMapping("/salary/sum")
+    public int getEmployeeSalarySum() {
+        return employeeService.getEmployeeSalarySum();
+    }
 
+    @GetMapping("/salary/min")
+    public int getEmployeeSalaryMin() {
+        return employeeService.getEmployeeSalaryMin();
+    }
+
+    @GetMapping("/salary/max")
+    public int getEmployeeSalaryMax() {
+        return employeeService.getEmployeeSalaryMax();
+    }
+
+    @GetMapping("/salary/high-salary")
+    public List<Employee> getEmployeeSalaryHighSalary() {
+        return employeeService.getEmployeeHighSalary();
+    }
 }
