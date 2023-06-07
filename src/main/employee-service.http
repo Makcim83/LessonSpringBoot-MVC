@@ -9,3 +9,12 @@ GET http://localhost:8080/employee/salary/max
 
 ### Получение всех сотрудников, зарплата которых больше средней
 GET http://localhost:8080/employee/salary/high-salary
+
+### Тест - добавление сорудника в список
+GET http://localhost:8080/employee/newtest
+
+### Тест - сотрудников в списке
+GET http://localhost:8080/employee/count
+
+### Получение сорудника по id
+GET http://localhost:8080/employee/id/{id}

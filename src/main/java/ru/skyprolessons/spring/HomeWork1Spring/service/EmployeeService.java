@@ -15,4 +15,6 @@ public interface EmployeeService {
     int getEmployeeSalaryMax();
 
     List<Employee> getEmployeeHighSalary();
+
+    Employee getEmployeeByID(int id);
 }

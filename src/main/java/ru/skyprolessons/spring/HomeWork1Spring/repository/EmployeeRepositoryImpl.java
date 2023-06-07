@@ -4,21 +4,37 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import ru.skyprolessons.spring.HomeWork1Spring.pojo.Employee;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.OptionalInt;
 import java.util.stream.Collectors;
 
 @Repository
 @RequiredArgsConstructor
 public class EmployeeRepositoryImpl implements EmployeeRepository {
 
+    private static int employeeLastId;
+    private static List<Employee> employeeList = new ArrayList<>();
 
-    private final List<Employee> employeeList = List.of(
-            new Employee("Катя", 90000),
-            new Employee("Дима", 102000),
-            new Employee("Олег", 80000),
-            new Employee("Вика", 125000)
-    );
+    static {
+        employeeList.add(new Employee(1, "Катя", 90000));
+        employeeList.add(new Employee(2, "Дима", 102000));
+        employeeList.add(new Employee(3, "Олег", 80000));
+        employeeList.add(new Employee(4, "Вика", 125000));
+        employeeLastId = 4;
+    }
+
+    @Override
+    public Employee getNewEmployee() {
+        int idNew = ++employeeLastId;
+        Employee e = new Employee(idNew, "NewEmployeeName", 999);
+        employeeList.add(e);
+        return e;
+    }
+
+    @Override
+    public Employee getEmployeeById(int id) {
+        return employeeList.get(id);
+    }
 
     @Override
     public int getEmployeeCount() {
