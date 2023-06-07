@@ -1,7 +1,6 @@
 package ru.skyprolessons.spring.HomeWork1Spring.pojo;
 
 import lombok.Data;
-import ru.skyprolessons.spring.HomeWork1Spring.repository.EmployeeRepository;
 
 @Data
 public class Employee {

@@ -1,12 +1,12 @@
 package ru.skyprolessons.spring.HomeWork1Spring.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.skyprolessons.spring.HomeWork1Spring.pojo.Employee;
 import ru.skyprolessons.spring.HomeWork1Spring.service.EmployeeService;
 
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping("/employee")
@@ -41,20 +41,9 @@ public class EmployeeController {
         return employeeService.getEmployeeHighSalary();
     }
 
-//    @GetMapping
-//        Employee getEmployeeByID(@RequestParam Map <String, String> params) {
-//        int id = Integer.parseInt(params.get("id"));
-//        String name = params.get("name");
-//        int salary = 125000;
-//
-//        return new Employee(id, name, salary);
-//    }
-
-    @GetMapping("/id/{id}")
-    Employee getEmployeeByID(@RequestParam String idFromPath) {
-        int id = Integer.parseInt(idFromPath);
-        Employee employee = employeeService.getEmployeeByID(id);
-        return employee;
+    @GetMapping(value = "/id/{id}")
+    public ResponseEntity<Employee> getEmployeeById(@PathVariable int id) {
+        return ResponseEntity.ok(employeeService.getEmployeeByID(id));
     }
 
     @PostMapping

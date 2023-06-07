@@ -24,14 +24,6 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
     }
 
     @Override
-    public Employee getNewEmployee() {
-        int idNew = ++employeeLastId;
-        Employee e = new Employee(idNew, "NewEmployeeName", 999);
-        employeeList.add(e);
-        return e;
-    }
-
-    @Override
     public Employee getEmployeeById(int id) {
         return employeeList.get(id);
     }

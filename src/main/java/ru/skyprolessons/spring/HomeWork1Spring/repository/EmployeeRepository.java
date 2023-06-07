@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.OptionalInt;
 
 public interface EmployeeRepository {
-    Employee getNewEmployee();
 
     Employee getEmployeeById(int id);
 
@@ -19,5 +18,4 @@ public interface EmployeeRepository {
     int getEmployeeSalaryMax();
 
     List<Employee> getEmployeeHighSalary();
-
 }

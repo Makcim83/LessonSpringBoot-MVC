@@ -42,5 +42,5 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public Employee getEmployeeByID(int id) {
         return employeeRepository.getEmployeeById(id);
-    };
+    }
 }
