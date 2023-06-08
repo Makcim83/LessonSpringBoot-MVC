@@ -15,17 +15,25 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
     private static int employeeLastId;
     private static List<Employee> employeeList = new ArrayList<>();
 
-    static {
-        employeeList.add(new Employee(1, "Катя", 90000));
-        employeeList.add(new Employee(2, "Дима", 102000));
-        employeeList.add(new Employee(3, "Олег", 80000));
-        employeeList.add(new Employee(4, "Вика", 125000));
+    static {  //test
+        addEmployeesForExample();
+    }
+
+    private static void addEmployeesForExample() {
+        employeeList.add(new Employee(0, "Катя", 90000));
+        employeeList.add(new Employee(1, "Дима", 102000));
+        employeeList.add(new Employee(2, "Олег", 80000));
+        employeeList.add(new Employee(3, "Вика", 125000));
         employeeLastId = 4;
     }
 
     @Override
     public Employee getEmployeeById(int id) {
-        return employeeList.get(id);
+        Employee employee = employeeList.stream()
+                .filter(i -> i.getId() == id)
+                .findAny()
+                .orElse(new Employee(id, "no found", 0));
+        return employee;
     }
 
     @Override
