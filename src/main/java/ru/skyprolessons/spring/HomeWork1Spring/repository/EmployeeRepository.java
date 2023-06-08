@@ -3,7 +3,6 @@ package ru.skyprolessons.spring.HomeWork1Spring.repository;
 import ru.skyprolessons.spring.HomeWork1Spring.pojo.Employee;
 
 import java.util.List;
-import java.util.OptionalInt;
 
 public interface EmployeeRepository {
 
@@ -17,5 +16,11 @@ public interface EmployeeRepository {
 
     int getEmployeeSalaryMax();
 
-    List<Employee> getEmployeeHighSalary();
+    List<Employee> getEmployeesHighSalary();
+
+    List<Employee> getEmployeesWithSalaryMoreThan(int salary);
+
+    void addEmployee(Employee employee);
+
+    void removeEmployee(int id);
 }

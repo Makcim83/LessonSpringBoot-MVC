@@ -2,6 +2,7 @@ package ru.skyprolessons.spring.HomeWork1Spring.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 import ru.skyprolessons.spring.HomeWork1Spring.pojo.Employee;
 import ru.skyprolessons.spring.HomeWork1Spring.repository.EmployeeRepository;
 
@@ -34,13 +35,27 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public List<Employee> getEmployeeHighSalary() {
-        return employeeRepository.getEmployeeHighSalary();
+    public List<Employee> getEmployeesHighSalary() {
+        return employeeRepository.getEmployeesHighSalary();
     }
 
+    @Override
+    public List<Employee> getEmployeesWithSalaryMoreThan(int salary) {
+        return employeeRepository.getEmployeesWithSalaryMoreThan(salary);
+    }
 
     @Override
     public Employee getEmployeeByID(int id) {
         return employeeRepository.getEmployeeById(id);
+    }
+
+    @Override
+    public void addEmployee(Employee employee) {
+        employeeRepository.addEmployee(employee);
+    }
+
+    @Override
+    public void removeEmployee(int id) {
+        employeeRepository.removeEmployee(id);
     }
 }

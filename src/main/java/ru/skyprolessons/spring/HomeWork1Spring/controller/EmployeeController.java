@@ -37,8 +37,13 @@ public class EmployeeController {
     }
 
     @GetMapping("/salary/high-salary")
-    public List<Employee> getEmployeeSalaryHighSalary() {
-        return employeeService.getEmployeeHighSalary();
+    public List<Employee> getEmployeesSalaryHighSalary() {
+        return employeeService.getEmployeesHighSalary();
+    }
+
+    @GetMapping(value = "/salaryHigherThan/{salary}")
+    public List<Employee> getEmployeesWithSalaryMoreThan(@PathVariable int salary) {
+        return employeeService.getEmployeesWithSalaryMoreThan(salary);
     }
 
     @GetMapping(value = "/id/{id}")
@@ -46,7 +51,13 @@ public class EmployeeController {
         return ResponseEntity.ok(employeeService.getEmployeeByID(id));
     }
 
-    @PostMapping
+    @PostMapping("/new")
     public void addEmployee(@RequestBody Employee employee) {
+        employeeService.addEmployee(employee);
+    }
+
+    @DeleteMapping(value = "/delete/{id}")
+    public void removeEmployee(@PathVariable int id) {
+        employeeService.removeEmployee(id);
     }
 }

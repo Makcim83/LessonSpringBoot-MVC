@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static jdk.dynalink.linker.support.Guards.isNull;
+
 @Repository
 @RequiredArgsConstructor
 public class EmployeeRepositoryImpl implements EmployeeRepository {
@@ -18,13 +20,11 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
     static {  //test
         addEmployeesForExample();
     }
-
     private static void addEmployeesForExample() {
-        employeeList.add(new Employee(0, "Катя", 90000));
-        employeeList.add(new Employee(1, "Дима", 102000));
-        employeeList.add(new Employee(2, "Олег", 80000));
-        employeeList.add(new Employee(3, "Вика", 125000));
-        employeeLastId = 4;
+        employeeList.add(new Employee(employeeLastId++, "Катя", 90000));
+        employeeList.add(new Employee(employeeLastId++, "Дима", 102000));
+        employeeList.add(new Employee(employeeLastId++, "Олег", 80000));
+        employeeList.add(new Employee(employeeLastId++, "Вика", 125000));
     }
 
     @Override
@@ -70,7 +70,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
     }
 
     @Override
-    public List<Employee> getEmployeeHighSalary() {
+    public List<Employee> getEmployeesHighSalary() {
         //foreach with salary more than average
         int averageSalary;
         if (getEmployeeCount() == 0) {
@@ -83,5 +83,31 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
                 .filter(employee -> employee.getSalary() > averageSalary)
                 .collect(Collectors.toList());
         return employeeHihgSalary;
+    }
+
+    @Override
+    public List<Employee> getEmployeesWithSalaryMoreThan(int salary) {
+        List<Employee> employeesWithSalaryMoreThan = employeeList
+                .stream()
+                .filter(i -> i.getSalary() > salary)
+                .collect(Collectors.toList());
+        return employeesWithSalaryMoreThan;
+    }
+
+    public void addEmployee(Employee employee) {
+            employeeList.add(new Employee(
+                    employeeLastId++,
+                    employee.getName(),
+                    employee.getSalary()));
+    }
+
+    @Override
+    public void removeEmployee(int id) {
+        Long count = employeeList.stream()
+                .filter(i -> i.getId() == id)
+                .count();
+        if (count > 0) {
+            employeeList.remove(getEmployeeById(id));
+        }
     }
 }
