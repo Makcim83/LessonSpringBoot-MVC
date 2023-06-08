@@ -2,7 +2,6 @@ package ru.skyprolessons.spring.HomeWork1Spring.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 import ru.skyprolessons.spring.HomeWork1Spring.pojo.Employee;
 import ru.skyprolessons.spring.HomeWork1Spring.repository.EmployeeRepository;
 
@@ -52,6 +51,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public void addEmployee(Employee employee) {
         employeeRepository.addEmployee(employee);
+    }
+
+    @Override
+    public void editEmployee(int id, Employee employee) {
+        employeeRepository.editEmployee(id, employee);
     }
 
     @Override

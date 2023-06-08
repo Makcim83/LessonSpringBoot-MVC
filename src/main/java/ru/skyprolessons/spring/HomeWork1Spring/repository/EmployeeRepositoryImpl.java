@@ -8,8 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static jdk.dynalink.linker.support.Guards.isNull;
-
 @Repository
 @RequiredArgsConstructor
 public class EmployeeRepositoryImpl implements EmployeeRepository {
@@ -99,6 +97,17 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
                     employeeLastId++,
                     employee.getName(),
                     employee.getSalary()));
+    }
+
+    @Override
+    public void editEmployee(int id, Employee employee) {
+        Long count = employeeList.stream()
+                .filter(i -> i.getId() == id)
+                .count();
+        if (count > 0) {
+            employeeList.remove(getEmployeeById(id));
+            employeeList.add(new Employee(id, employee.getName(), employee.getSalary()));
+        }
     }
 
     @Override
