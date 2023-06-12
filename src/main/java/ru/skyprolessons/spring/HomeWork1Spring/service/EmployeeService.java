@@ -1,10 +1,9 @@
 package ru.skyprolessons.spring.HomeWork1Spring.service;
 
-import org.springframework.web.bind.annotation.PathVariable;
 import ru.skyprolessons.spring.HomeWork1Spring.pojo.Employee;
-import ru.skyprolessons.spring.HomeWork1Spring.repository.EmployeeRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface EmployeeService {
 
@@ -20,7 +19,7 @@ public interface EmployeeService {
 
     List<Employee> getEmployeesWithSalaryMoreThan(int salary);
 
-    Employee getEmployeeByID(int id);
+    Optional<Employee> getEmployeeByID(int id);
 
     void addEmployee(Employee employee);
 

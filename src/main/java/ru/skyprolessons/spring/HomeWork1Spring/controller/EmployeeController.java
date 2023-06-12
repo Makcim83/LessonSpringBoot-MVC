@@ -7,6 +7,7 @@ import ru.skyprolessons.spring.HomeWork1Spring.pojo.Employee;
 import ru.skyprolessons.spring.HomeWork1Spring.service.EmployeeService;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/employee")
@@ -47,7 +48,7 @@ public class EmployeeController {
     }
 
     @GetMapping(value = "/id/{id}")
-    public ResponseEntity<Employee> getEmployeeById(@PathVariable int id) {
+    public ResponseEntity<Optional<Employee>> getEmployeeById(@PathVariable int id) {
         return ResponseEntity.ok(employeeService.getEmployeeByID(id));
     }
 

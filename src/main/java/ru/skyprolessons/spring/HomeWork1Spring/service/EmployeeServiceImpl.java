@@ -6,6 +6,7 @@ import ru.skyprolessons.spring.HomeWork1Spring.pojo.Employee;
 import ru.skyprolessons.spring.HomeWork1Spring.repository.EmployeeRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -44,7 +45,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Employee getEmployeeByID(int id) {
+    public Optional<Employee> getEmployeeByID(int id) {
         return employeeRepository.getEmployeeById(id);
     }
 

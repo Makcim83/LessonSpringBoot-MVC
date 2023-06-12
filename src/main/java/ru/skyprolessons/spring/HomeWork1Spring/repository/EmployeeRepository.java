@@ -1,12 +1,14 @@
 package ru.skyprolessons.spring.HomeWork1Spring.repository;
 
+import org.springframework.data.repository.CrudRepository;
 import ru.skyprolessons.spring.HomeWork1Spring.pojo.Employee;
 
 import java.util.List;
+import java.util.Optional;
 
-public interface EmployeeRepository {
+public interface EmployeeRepository extends CrudRepository<Employee, Integer> {
 
-    Employee getEmployeeById(int id);
+    Optional<Employee> getEmployeeById(int id);
 
     int getEmployeeCount();
 
