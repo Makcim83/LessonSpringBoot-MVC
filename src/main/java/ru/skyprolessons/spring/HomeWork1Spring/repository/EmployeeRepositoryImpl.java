@@ -4,21 +4,35 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import ru.skyprolessons.spring.HomeWork1Spring.pojo.Employee;
 
+import java.util.ArrayList;
 import java.util.List;
-import java.util.OptionalInt;
 import java.util.stream.Collectors;
 
 @Repository
 @RequiredArgsConstructor
 public class EmployeeRepositoryImpl implements EmployeeRepository {
 
+    private static int employeeLastId;
+    private static List<Employee> employeeList = new ArrayList<>();
 
-    private final List<Employee> employeeList = List.of(
-            new Employee("Катя", 90000),
-            new Employee("Дима", 102000),
-            new Employee("Олег", 80000),
-            new Employee("Вика", 125000)
-    );
+    static {  //test
+        addEmployeesForExample();
+    }
+    private static void addEmployeesForExample() {
+        employeeList.add(new Employee(employeeLastId++, "Катя", 90000));
+        employeeList.add(new Employee(employeeLastId++, "Дима", 102000));
+        employeeList.add(new Employee(employeeLastId++, "Олег", 80000));
+        employeeList.add(new Employee(employeeLastId++, "Вика", 125000));
+    }
+
+    @Override
+    public Employee getEmployeeById(int id) {
+        Employee employee = employeeList.stream()
+                .filter(i -> i.getId() == id)
+                .findAny()
+                .orElse(new Employee(id, "no found", 0));
+        return employee;
+    }
 
     @Override
     public int getEmployeeCount() {
@@ -54,7 +68,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
     }
 
     @Override
-    public List<Employee> getEmployeeHighSalary() {
+    public List<Employee> getEmployeesHighSalary() {
         //foreach with salary more than average
         int averageSalary;
         if (getEmployeeCount() == 0) {
@@ -67,5 +81,42 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
                 .filter(employee -> employee.getSalary() > averageSalary)
                 .collect(Collectors.toList());
         return employeeHihgSalary;
+    }
+
+    @Override
+    public List<Employee> getEmployeesWithSalaryMoreThan(int salary) {
+        List<Employee> employeesWithSalaryMoreThan = employeeList
+                .stream()
+                .filter(i -> i.getSalary() > salary)
+                .collect(Collectors.toList());
+        return employeesWithSalaryMoreThan;
+    }
+
+    public void addEmployee(Employee employee) {
+            employeeList.add(new Employee(
+                    employeeLastId++,
+                    employee.getName(),
+                    employee.getSalary()));
+    }
+
+    @Override
+    public void editEmployee(int id, Employee employee) {
+        Long count = employeeList.stream()
+                .filter(i -> i.getId() == id)
+                .count();
+        if (count > 0) {
+            employeeList.remove(getEmployeeById(id));
+            employeeList.add(new Employee(id, employee.getName(), employee.getSalary()));
+        }
+    }
+
+    @Override
+    public void removeEmployee(int id) {
+        Long count = employeeList.stream()
+                .filter(i -> i.getId() == id)
+                .count();
+        if (count > 0) {
+            employeeList.remove(getEmployeeById(id));
+        }
     }
 }
