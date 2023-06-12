@@ -1,5 +1,5 @@
 ### Тест. проверяем создание 4х сущностей Employee
-http://localhost:8080/employee/starttest
+GET http://localhost:8080/employee/starttest
 
 ### Количество сотрудников в списке
 GET http://localhost:8080/employee/count

@@ -1,0 +1,282 @@
+GET http://localhost:8080/employee/count
+
+<> 2023-06-13T013205.200.json
+
+###
+
+GET http://localhost:8080/employee/starttest
+
+<> 2023-06-13T013157.200.txt
+
+###
+
+GET http://localhost:8080/employee/starttest
+
+<> 2023-06-13T013156.200.txt
+
+###
+
+GET http://localhost:8080/employee/starttest
+
+<> 2023-06-13T013150.200.txt
+
+###
+
+POST http://localhost:8080/employee/new
+
+<> 2023-06-13T005017.400.json
+
+###
+
+GET http://localhost:8080/employee/count
+
+<> 2023-06-13T005017-4.200.json
+
+###
+
+GET http://localhost:8080/employee/salary/high-salary
+
+<> 2023-06-13T005017-3.200.json
+
+###
+
+GET http://localhost:8080/employee/salary/max
+
+<> 2023-06-13T005017-2.200.json
+
+###
+
+GET http://localhost:8080/employee/salary/min
+
+<> 2023-06-13T005017-1.200.json
+
+###
+
+GET http://localhost:8080/employee/salary/sum
+
+<> 2023-06-13T005017.200.json
+
+###
+
+GET http://localhost:8080/employee/count
+
+<> 2023-06-13T005002-1.200.json
+
+###
+
+GET http://localhost:8080/employee/salary/high-salary
+
+<> 2023-06-13T005002.200.json
+
+###
+
+GET http://localhost:8080/employee/salary/max
+
+<> 2023-06-13T004952.200.json
+
+###
+
+GET http://localhost:8080/employee/salary/sum
+
+<> 2023-06-13T004947.200.json
+
+###
+
+GET http://localhost:8080/employee/salary/min
+
+<> 2023-06-13T004944.200.json
+
+###
+
+GET http://localhost:8080/employee/count
+
+<> 2023-06-13T004931.200.json
+
+###
+
+GET http://localhost:8080/employee/salary/high-salary
+
+<> 2023-06-13T004811.200.json
+
+###
+
+GET http://localhost:8080/employee/count
+
+<> 2023-06-13T004808.200.json
+
+###
+
+GET http://localhost:8080/employee/salary/high-salary
+
+<> 2023-06-13T004806.200.json
+
+###
+
+GET http://localhost:8080/employee/count
+
+<> 2023-06-08T234744.200.json
+
+###
+
+DELETE http://localhost:8080/employee/delete/2
+
+###
+
+GET http://localhost:8080/employee/count
+
+<> 2023-06-08T234736.200.json
+
+###
+
+GET http://localhost:8080/employee/count
+
+<> 2023-06-08T234725.200.json
+
+###
+
+DELETE http://localhost:8080/employee/delete/2
+
+###
+
+DELETE http://localhost:8080/employee/delete/1
+
+###
+
+GET http://localhost:8080/employee/count
+
+<> 2023-06-08T233744.200.json
+
+###
+
+GET http://localhost:8080/employee/count
+
+<> 2023-06-08T233743.200.json
+
+###
+
+DELETE http://localhost:8080/employee/delete/1
+
+###
+
+POST http://localhost:8080/employee/new
+
+<> 2023-06-08T233736.400.json
+
+###
+
+GET http://localhost:8080/employee/id/3
+
+<> 2023-06-08T233736-6.200.json
+
+###
+
+GET http://localhost:8080/employee/count
+
+<> 2023-06-08T233736-5.200.json
+
+###
+
+GET http://localhost:8080/employee/salaryHigherThan/101000
+
+<> 2023-06-08T233736-4.200.json
+
+###
+
+GET http://localhost:8080/employee/salary/high-salary
+
+<> 2023-06-08T233736-3.200.json
+
+###
+
+GET http://localhost:8080/employee/salary/max
+
+<> 2023-06-08T233736-2.200.json
+
+###
+
+GET http://localhost:8080/employee/salary/min
+
+<> 2023-06-08T233736-1.200.json
+
+###
+
+GET http://localhost:8080/employee/salary/sum
+
+<> 2023-06-08T233736.200.json
+
+###
+
+DELETE http://localhost:8080/employee/delete/1
+
+###
+
+GET http://localhost:8080/employee/salaryHigherThan/101000
+
+<> 2023-06-08T233725.200.json
+
+###
+
+GET http://localhost:8080/employee/salaryHigherThan/101000
+
+<> 2023-06-08T233722.200.json
+
+###
+
+GET http://localhost:8080/employee/id/3
+
+<> 2023-06-08T233718.200.json
+
+###
+
+GET http://localhost:8080/employee/id/3
+
+<> 2023-06-08T233715.200.json
+
+###
+
+DELETE http://localhost:8080/employee/delete/3
+
+###
+
+DELETE http://localhost:8080/employee/delete/2
+
+###
+
+DELETE http://localhost:8080/employee/delete/2
+
+###
+
+GET http://localhost:8080/employee/count
+
+<> 2023-06-08T233649.200.json
+
+###
+
+GET http://localhost:8080/employee/count
+
+<> 2023-06-08T233645.200.json
+
+###
+
+DELETE http://localhost:8080/employee/delete/2
+
+###
+
+DELETE http://localhost:8080/employee/2
+
+<> 2023-06-08T233533.404.json
+
+###
+
+DELETE http://localhost:8080/employee/1
+
+<> 2023-06-08T233525.404.json
+
+###
+
+DELETE http://localhost:8080/employee/1
+
+<> 2023-06-08T233518.404.json
+
+###
+
