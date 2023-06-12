@@ -1,3 +1,9 @@
+### Тест. проверяем создание 4х сущностей Employee
+http://localhost:8080/employee/starttest
+
+### Количество сотрудников в списке
+GET http://localhost:8080/employee/count
+
 ### Получение суммы зарплат сотрудников
 GET http://localhost:8080/employee/salary/sum
 
@@ -12,9 +18,6 @@ GET http://localhost:8080/employee/salary/high-salary
 
 ### Вовращает срипудников с зарплатой выше переданного значения
 GET http://localhost:8080/employee/salaryHigherThan/{salary}
-
-### Количество сотрудников в списке
-GET http://localhost:8080/employee/count
 
 ### Получение сорудника по id
 GET http://localhost:8080/employee/id/{id}
