@@ -13,17 +13,15 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class EmployeeRepositoryImpl implements EmployeeRepository {
 
-    private static int employeeLastId;
-    private static List<Employee> employeeList = new ArrayList<>();
 
-    {  //test
-        addEmployeesForExample();
-    }
-    private void addEmployeesForExample() {
-        save(new Employee(employeeLastId++, "Катя", 90000));
-        save(new Employee(employeeLastId++, "Дима", 102000));
-        save(new Employee(employeeLastId++, "Олег", 80000));
-        save(new Employee(employeeLastId++, "Вика", 125000));
+    private List<Employee> employeeList = new ArrayList<>();
+    @Override
+    public void startTest() {
+        System.out.println("test block is started");
+        save(new Employee(1, "Катя", 90000));
+        save(new Employee(2, "Дима", 102000));
+        save(new Employee(3, "Олег", 80000));
+        save(new Employee(4, "Вика", 125000));
     }
 
     @Override
@@ -33,8 +31,10 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
     }
 
     @Override
-    public int getEmployeeCount() {
-        return employeeList.size();
+    public Long getEmployeeCount() {
+        Long employeesCounts = count();
+        System.out.println(employeesCounts); //test
+        return employeesCounts;
     }
 
     @Override
@@ -68,7 +68,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
     @Override
     public List<Employee> getEmployeesHighSalary() {
         //foreach with salary more than average
-        int averageSalary;
+        long averageSalary;
         if (getEmployeeCount() == 0) {
             averageSalary = 0;
         } else {
@@ -91,7 +91,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
     }
 
     public void addEmployee(Employee employee) {
-            save(employee);
+        save(employee);
     }
 
     @Override
@@ -101,7 +101,11 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
                 .count();
         if (count > 0) {
             employeeList.remove(getEmployeeById(id));
-            employeeList.add(new Employee(id, employee.getName(), employee.getSalary()));
+            employeeList.add(new Employee(
+                    id,
+                    employee.getName(),
+                    employee.getSalary()
+            ));
         }
     }
 
@@ -117,7 +121,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
 
     @Override
     public <S extends Employee> S save(S entity) {
-        return null;
+        return entity;
     }
 
     @Override

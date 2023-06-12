@@ -16,9 +16,14 @@ public class EmployeeController {
 
     private final EmployeeService employeeService;
 
+    @GetMapping("/starttest")
+    public String startTest() {
+        employeeService.startTest();
+        return "controller";
+    }
 
     @GetMapping("/count")
-    public int getEmployeeCount() {
+    public Long getEmployeeCount() {
         return employeeService.getEmployeeCount();
     }
 

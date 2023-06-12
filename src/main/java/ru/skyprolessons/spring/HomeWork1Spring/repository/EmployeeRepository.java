@@ -8,9 +8,10 @@ import java.util.Optional;
 
 public interface EmployeeRepository extends CrudRepository<Employee, Integer> {
 
+    void startTest();
     Optional<Employee> getEmployeeById(int id);
 
-    int getEmployeeCount();
+    Long getEmployeeCount();
 
     int getEmployeeSalarySum();
 

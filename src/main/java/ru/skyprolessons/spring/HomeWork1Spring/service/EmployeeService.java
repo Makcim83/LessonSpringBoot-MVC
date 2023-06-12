@@ -6,8 +6,9 @@ import java.util.List;
 import java.util.Optional;
 
 public interface EmployeeService {
+    String startTest();
 
-    int getEmployeeCount();
+    Long getEmployeeCount();
 
     int getEmployeeSalarySum();
 
