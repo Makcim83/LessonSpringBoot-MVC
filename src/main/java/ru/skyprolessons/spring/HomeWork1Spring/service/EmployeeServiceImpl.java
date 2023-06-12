@@ -12,8 +12,11 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public String startTest() {
-        employeeRepository.startTest();
-        return employeeRepository.getEmployeeCount().toString();
+        addEmployee(new Employee(1, "Катя", 90000));
+        addEmployee(new Employee(2, "Дима", 102000));
+        addEmployee(new Employee(3, "Олег", 80000));
+        addEmployee(new Employee(4, "Вика", 125000));
+        return "test block is started";
     }
 
     private final EmployeeRepository employeeRepository;
@@ -23,7 +26,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public Long getEmployeeCount() {
-        return employeeRepository.getEmployeeCount();
+        return employeeRepository.count();
     }
 
     @Override
@@ -58,7 +61,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public void addEmployee(Employee employee) {
-        employeeRepository.addEmployee(employee);
+        employeeRepository.save(employee);
     }
 
     @Override
@@ -68,6 +71,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public void removeEmployee(int id) {
-        employeeRepository.removeEmployee(id);
+        employeeRepository.deleteById(id);
     }
 }

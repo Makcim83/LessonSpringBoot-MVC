@@ -1,8 +1,7 @@
 package ru.skyprolessons.spring.HomeWork1Spring.pojo;
 
-import jakarta.persistence.*;
-import lombok.Data;
 
+import jakarta.persistence.*;
 
 @Entity
 @Table(name="employee")
@@ -14,7 +13,10 @@ public class Employee {
     private String name;
     private int salary;
 
-    public Employee(Integer id, String name, int salary) {
+    public Employee(
+            Integer id,
+            String name,
+            int salary) {
         this.id = id;
         this.name = name;
         this.salary = salary;

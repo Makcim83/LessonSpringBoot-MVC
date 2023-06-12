@@ -13,16 +13,16 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class EmployeeRepositoryImpl implements EmployeeRepository {
 
-
     private List<Employee> employeeList = new ArrayList<>();
-    @Override
-    public void startTest() {
-        System.out.println("test block is started");
-        save(new Employee(1, "Катя", 90000));
-        save(new Employee(2, "Дима", 102000));
-        save(new Employee(3, "Олег", 80000));
-        save(new Employee(4, "Вика", 125000));
-    }
+
+//    @Override
+//    public void startTest() {
+//        System.out.println("test block is started");
+//        employeeRepository.save(new Employee(1, "Катя", 90000));
+//        employeeRepository.save(new Employee(2, "Дима", 102000));
+//        employeeRepository.save(new Employee(3, "Олег", 80000));
+//        employeeRepository.save(new Employee(4, "Вика", 125000));
+//    }
 
     @Override
     public Optional<Employee> getEmployeeById(int id) {

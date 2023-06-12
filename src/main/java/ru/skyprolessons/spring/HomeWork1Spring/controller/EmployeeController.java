@@ -18,8 +18,7 @@ public class EmployeeController {
 
     @GetMapping("/starttest")
     public String startTest() {
-        employeeService.startTest();
-        return "controller";
+        return employeeService.startTest();
     }
 
     @GetMapping("/count")
