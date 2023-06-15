@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import ru.skyprolessons.spring.HomeWork1Spring.pojo.Employee;
 import ru.skyprolessons.spring.HomeWork1Spring.service.EmployeeService;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,36 +22,41 @@ public class EmployeeController {
         return employeeService.startTest();
     }
 
+    @GetMapping("/all")
+    public List<Employee> getAllEmployees() {
+        return employeeService.getAllEmployees();
+    }
+
     @GetMapping("/count")
     public Long getEmployeeCount() {
         return employeeService.getEmployeeCount();
     }
 
-    @GetMapping("/salary/sum")
-    public int getEmployeeSalarySum() {
-        return employeeService.getEmployeeSalarySum();
-    }
-
-    @GetMapping("/salary/min")
-    public int getEmployeeSalaryMin() {
-        return employeeService.getEmployeeSalaryMin();
-    }
-
-    @GetMapping("/salary/max")
-    public int getEmployeeSalaryMax() {
-        return employeeService.getEmployeeSalaryMax();
-    }
-
-    @GetMapping("/salary/high-salary")
-    public List<Employee> getEmployeesSalaryHighSalary() {
-        return employeeService.getEmployeesHighSalary();
-    }
-
-    @GetMapping(value = "/salaryHigherThan/{salary}")
-    public List<Employee> getEmployeesWithSalaryMoreThan(@PathVariable int salary) {
-        return employeeService.getEmployeesWithSalaryMoreThan(salary);
-    }
-
+//    @GetMapping("/salary/sum")
+//    public int getEmployeeSalarySum() {
+//        return employeeService.getEmployeeSalarySum();
+//    }
+//
+//    @GetMapping("/salary/min")
+//    public int getEmployeeSalaryMin() {
+//        return employeeService.getEmployeeSalaryMin();
+//    }
+//
+//    @GetMapping("/salary/max")
+//    public int getEmployeeSalaryMax() {
+//        return employeeService.getEmployeeSalaryMax();
+//    }
+//
+//    @GetMapping("/salary/high-salary")
+//    public List<Employee> getEmployeesSalaryHighSalary() {
+//        return employeeService.getEmployeesHighSalary();
+//    }
+//
+//    @GetMapping(value = "/salaryHigherThan/{salary}")
+//    public List<Employee> getEmployeesWithSalaryMoreThan(@PathVariable int salary) {
+//        return employeeService.getEmployeesWithSalaryMoreThan(salary);
+//    }
+//
     @GetMapping(value = "/id/{id}")
     public ResponseEntity<Optional<Employee>> getEmployeeById(@PathVariable int id) {
         return ResponseEntity.ok(employeeService.getEmployeeByID(id));

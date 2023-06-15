@@ -10,16 +10,18 @@ public interface EmployeeService {
 
     Long getEmployeeCount();
 
-    int getEmployeeSalarySum();
+    List<Employee> getAllEmployees();
 
-    int getEmployeeSalaryMin();
-
-    int getEmployeeSalaryMax();
-
-    List<Employee> getEmployeesHighSalary();
-
-    List<Employee> getEmployeesWithSalaryMoreThan(int salary);
-
+//    int getEmployeeSalarySum();
+//
+//    int getEmployeeSalaryMin();
+//
+//    int getEmployeeSalaryMax();
+//
+//    List<Employee> getEmployeesHighSalary();
+//
+//    List<Employee> getEmployeesWithSalaryMoreThan(int salary);
+//
     Optional<Employee> getEmployeeByID(int id);
 
     void addEmployee(Employee employee);
