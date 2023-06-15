@@ -19,7 +19,6 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public String startTest() {
-//        employeeRepository.startTest();
         System.out.println("test - service class /add some employees/");
         employeeRepository.save(new Employee(1, "Катя", 90000));
         employeeRepository.save(new Employee(2, "Дима", 102000));
@@ -40,30 +39,30 @@ public class EmployeeServiceImpl implements EmployeeService {
         return result;
     }
 
-//    @Override
-//    public int getEmployeeSalarySum() {
-//        return employeeRepository.getEmployeeSalarySum();
-//    }
-//
-//    @Override
-//    public int getEmployeeSalaryMin() {
-//        return employeeRepository.getEmployeeSalaryMin();
-//    }
-//
-//    @Override
-//    public int getEmployeeSalaryMax() {
-//        return employeeRepository.getEmployeeSalaryMax();
-//    }
-//
-//    @Override
-//    public List<Employee> getEmployeesHighSalary() {
-//        return employeeRepository.getEmployeesHighSalary();
-//    }
-//
-//    @Override
-//    public List<Employee> getEmployeesWithSalaryMoreThan(int salary) {
-//        return employeeRepository.getEmployeesWithSalaryMoreThan(salary);
-//    }
+    @Override
+    public int getEmployeeSalarySum() {
+        return employeeRepository.getEmployeeSalarySum();
+    }
+
+    @Override
+    public int getEmployeeSalaryMin() {
+        return employeeRepository.getEmployeeSalaryMin();
+    }
+
+    @Override
+    public int getEmployeeSalaryMax() {
+        return employeeRepository.getEmployeeSalaryMax();
+    }
+
+    @Override
+    public List<Employee> getEmployeesHighSalary() {
+        return employeeRepository.getEmployeesHighSalary();
+    }
+
+    @Override
+    public List<Employee> getEmployeesWithSalaryMoreThan(int salary) {
+        return employeeRepository.getEmployeesWithSalaryMoreThan(salary);
+    }
 
     @Override
     public Optional<Employee> getEmployeeByID(int id) {
@@ -88,5 +87,10 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public void removeEmployee(int id) {
         employeeRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Employee> getEmployeesWithHighestSalary() {
+        return employeeRepository.getEmployeesWithHighestSalary();
     }
 }

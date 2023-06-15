@@ -12,16 +12,16 @@ public interface EmployeeService {
 
     List<Employee> getAllEmployees();
 
-//    int getEmployeeSalarySum();
-//
-//    int getEmployeeSalaryMin();
-//
-//    int getEmployeeSalaryMax();
-//
-//    List<Employee> getEmployeesHighSalary();
-//
-//    List<Employee> getEmployeesWithSalaryMoreThan(int salary);
-//
+    int getEmployeeSalarySum();
+
+    int getEmployeeSalaryMin();
+
+    int getEmployeeSalaryMax();
+
+    List<Employee> getEmployeesHighSalary();
+
+    List<Employee> getEmployeesWithSalaryMoreThan(int salary);
+
     Optional<Employee> getEmployeeByID(int id);
 
     void addEmployee(Employee employee);
@@ -29,4 +29,6 @@ public interface EmployeeService {
     void editEmployee(int id, Employee employee);
 
     void removeEmployee(int id);
+
+    List<Employee> getEmployeesWithHighestSalary();
 }
