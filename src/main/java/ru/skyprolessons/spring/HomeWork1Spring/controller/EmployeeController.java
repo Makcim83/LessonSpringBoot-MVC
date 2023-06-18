@@ -3,6 +3,8 @@ package ru.skyprolessons.spring.HomeWork1Spring.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import ru.skyprolessons.spring.HomeWork1Spring.dto.EmployeeDTO;
+import ru.skyprolessons.spring.HomeWork1Spring.dto.EmployeeFullInfo;
 import ru.skyprolessons.spring.HomeWork1Spring.pojo.Employee;
 import ru.skyprolessons.spring.HomeWork1Spring.service.EmployeeService;
 
@@ -22,7 +24,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/all")
-    public List<Employee> getAllEmployees() {
+    public List<EmployeeDTO> getAllEmployees() {
         return employeeService.getAllEmployees();
     }
 
@@ -72,8 +74,8 @@ public class EmployeeController {
     }
 
     @DeleteMapping(value = "/delete/{id}")
-    public void removeEmployee(@PathVariable int id) {
-        employeeService.removeEmployee(id);
+    public void deleteEmployee(@PathVariable int id) {
+        employeeService.deleteEmployee(id);
     }
 
 
@@ -82,4 +84,8 @@ public class EmployeeController {
         return employeeService.getEmployeesWithHighestSalary();
     }
 
+    @GetMapping(value = "/fullinfo")
+    public List<EmployeeFullInfo> findAllEmployeesFullInfo() {
+        return employeeService.findAllEmployeesFullInfo();
+    }
 }

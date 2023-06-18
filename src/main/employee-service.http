@@ -29,7 +29,7 @@ POST http://localhost:8080/employee/new
 PUT http://localhost:8080/employee/{id}
 
 ### Удаляет сотрудника с заданным id
-DELETE http://localhost:8080/employee/delete/{id}
+DELETE http://localhost:8080/employee/delete/6
 
 ### Возвращает сотрудника(ов) с самой высокой зарплатой в фирме;
 GET http://localhost:8080/employee/withHighestSalary

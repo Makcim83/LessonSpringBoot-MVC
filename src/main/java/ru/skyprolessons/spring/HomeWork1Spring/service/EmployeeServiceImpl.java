@@ -1,7 +1,10 @@
 package ru.skyprolessons.spring.HomeWork1Spring.service;
 
 import org.springframework.stereotype.Service;
+import ru.skyprolessons.spring.HomeWork1Spring.dto.EmployeeDTO;
+import ru.skyprolessons.spring.HomeWork1Spring.dto.EmployeeFullInfo;
 import ru.skyprolessons.spring.HomeWork1Spring.pojo.Employee;
+import ru.skyprolessons.spring.HomeWork1Spring.pojo.Position;
 import ru.skyprolessons.spring.HomeWork1Spring.repository.EmployeeRepository;
 
 import java.util.ArrayList;
@@ -20,10 +23,15 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public String startTest() {
         System.out.println("test - service class /add some employees/");
-        employeeRepository.save(new Employee(1, "Катя", 90000));
-        employeeRepository.save(new Employee(2, "Дима", 102000));
-        employeeRepository.save(new Employee(3, "Олег", 80000));
-        employeeRepository.save(new Employee(4, "Вика", 125000));
+//        employeeRepository.save(new Employee(1, "Катя", 90000));
+//        employeeRepository.save(new Employee(2, "Дима", 102000));
+//        employeeRepository.save(new Employee(3, "Олег", 80000));
+//        employeeRepository.save(new Employee(4, "Вика", 125000));
+
+        employeeRepository.save(new Employee(1, "Катя", 90000, new Position(1, "pos1")));
+        employeeRepository.save(new Employee(2, "Дима", 102000, new Position(1, "pos1")));
+        employeeRepository.save(new Employee(3, "Олег", 80000, new Position(2, "pos2")));
+        employeeRepository.save(new Employee(4, "Вика", 125000, new Position(3, "pos3")));
         return "test";
     }
 
@@ -33,10 +41,13 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public List<Employee> getAllEmployees() {
+    public List<EmployeeDTO> getAllEmployees() {
         List<Employee> result = new ArrayList<>();
         employeeRepository.findAll().forEach(result::add);
-        return result;
+
+        return result.stream()
+                .map(EmployeeDTO::fromEmployee)
+                .toList();
     }
 
     @Override
@@ -84,13 +95,20 @@ public class EmployeeServiceImpl implements EmployeeService {
         }
     }
 
-    @Override
-    public void removeEmployee(int id) {
+    public void deleteEmployee(int id) {
         employeeRepository.deleteById(id);
     }
 
     @Override
     public List<Employee> getEmployeesWithHighestSalary() {
         return employeeRepository.getEmployeesWithHighestSalary();
+    }
+
+    public List<EmployeeFullInfo> findAllEmployeesFullInfo() {
+        List<Employee> result = new ArrayList<>();
+        employeeRepository.findAllEmployeesFullInfo().forEach(result::add);
+        return result.stream()
+                .map(EmployeeFullInfo::fromEmployee)
+                .toList();
     }
 }

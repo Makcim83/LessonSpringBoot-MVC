@@ -1,3 +1,27 @@
+DELETE http://localhost:8080/employee/delete/6
+
+<> 2023-06-17T113325.400.json
+
+###
+
+DELETE http://localhost:8080/employee/delete/3
+
+<> 2023-06-17T113318.400.json
+
+###
+
+GET http://localhost:8080/employee/starttest
+
+<> 2023-06-17T102820.200.txt
+
+###
+
+GET http://localhost:8080/employee/salary/high-salary
+
+<> 2023-06-17T102809.200.json
+
+###
+
 GET http://localhost:8080/employee/withHighestSalary
 
 <> 2023-06-16T013404.200.json
@@ -263,30 +287,6 @@ GET http://localhost:8080/employee/id/3
 GET http://localhost:8080/employee/count
 
 <> 2023-06-08T233736-5.200.json
-
-###
-
-GET http://localhost:8080/employee/salaryHigherThan/101000
-
-<> 2023-06-08T233736-4.200.json
-
-###
-
-GET http://localhost:8080/employee/salary/high-salary
-
-<> 2023-06-08T233736-3.200.json
-
-###
-
-GET http://localhost:8080/employee/salary/max
-
-<> 2023-06-08T233736-2.200.json
-
-###
-
-GET http://localhost:8080/employee/salary/min
-
-<> 2023-06-08T233736-1.200.json
 
 ###
 

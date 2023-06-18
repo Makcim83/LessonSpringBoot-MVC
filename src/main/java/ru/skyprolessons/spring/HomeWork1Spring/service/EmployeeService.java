@@ -1,5 +1,7 @@
 package ru.skyprolessons.spring.HomeWork1Spring.service;
 
+import ru.skyprolessons.spring.HomeWork1Spring.dto.EmployeeDTO;
+import ru.skyprolessons.spring.HomeWork1Spring.dto.EmployeeFullInfo;
 import ru.skyprolessons.spring.HomeWork1Spring.pojo.Employee;
 
 import java.util.List;
@@ -10,7 +12,7 @@ public interface EmployeeService {
 
     Long getEmployeeCount();
 
-    List<Employee> getAllEmployees();
+    List<EmployeeDTO> getAllEmployees();
 
     int getEmployeeSalarySum();
 
@@ -28,7 +30,9 @@ public interface EmployeeService {
 
     void editEmployee(int id, Employee employee);
 
-    void removeEmployee(int id);
+    void deleteEmployee(int id);
 
     List<Employee> getEmployeesWithHighestSalary();
+
+    List<EmployeeFullInfo> findAllEmployeesFullInfo();
 }

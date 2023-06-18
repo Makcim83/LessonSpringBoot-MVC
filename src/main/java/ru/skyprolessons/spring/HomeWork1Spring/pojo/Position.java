@@ -10,12 +10,14 @@ import lombok.Setter;
 @Table(name = "position")
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
 @Setter
+@Getter
 public class Position {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Integer idPosition;
-    String Position;
+    @Column(name = "idposition")
+    private Integer idPosition;
+    @Column(name = "nameposition")
+    private String namePosition;
 }
