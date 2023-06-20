@@ -3,10 +3,13 @@ package ru.skyprolessons.spring.HomeWork1Spring.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import ru.skyprolessons.spring.HomeWork1Spring.dto.EmployeeDTO;
+import ru.skyprolessons.spring.HomeWork1Spring.dto.EmployeeFullInfo;
 import ru.skyprolessons.spring.HomeWork1Spring.pojo.Employee;
 import ru.skyprolessons.spring.HomeWork1Spring.service.EmployeeService;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/employee")
@@ -15,9 +18,18 @@ public class EmployeeController {
 
     private final EmployeeService employeeService;
 
+    @GetMapping("/starttest")
+    public String startTest() {
+        return employeeService.startTest();
+    }
+
+    @GetMapping("/all")
+    public List<EmployeeDTO> getAllEmployees() {
+        return employeeService.getAllEmployees();
+    }
 
     @GetMapping("/count")
-    public int getEmployeeCount() {
+    public Long getEmployeeCount() {
         return employeeService.getEmployeeCount();
     }
 
@@ -47,7 +59,7 @@ public class EmployeeController {
     }
 
     @GetMapping(value = "/id/{id}")
-    public ResponseEntity<Employee> getEmployeeById(@PathVariable int id) {
+    public ResponseEntity<Optional<Employee>> getEmployeeById(@PathVariable int id) {
         return ResponseEntity.ok(employeeService.getEmployeeByID(id));
     }
 
@@ -62,7 +74,18 @@ public class EmployeeController {
     }
 
     @DeleteMapping(value = "/delete/{id}")
-    public void removeEmployee(@PathVariable int id) {
-        employeeService.removeEmployee(id);
+    public void deleteEmployee(@PathVariable int id) {
+        employeeService.deleteEmployee(id);
+    }
+
+
+    @GetMapping(value = "/withHighestSalary")
+    public List<Employee> getEmployeesWithHighestSalary() {
+        return employeeService.getEmployeesWithHighestSalary();
+    }
+
+    @GetMapping(value = "/fullinfo")
+    public List<EmployeeFullInfo> findAllEmployeesFullInfo() {
+        return employeeService.findAllEmployeesFullInfo();
     }
 }

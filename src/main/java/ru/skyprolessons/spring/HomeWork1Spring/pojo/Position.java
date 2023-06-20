@@ -7,19 +7,17 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "employee")
+@Table(name = "position")
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
 @Setter
-public class Employee {
+@Getter
+public class Position {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    private String name;
-    private Integer salary;
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JoinColumn(name = "idposition")
-    private Position position;
+    @Column(name = "idposition")
+    private Integer idPosition;
+    @Column(name = "nameposition")
+    private String namePosition;
 }

@@ -1,14 +1,18 @@
 package ru.skyprolessons.spring.HomeWork1Spring.service;
 
-import org.springframework.web.bind.annotation.PathVariable;
+import ru.skyprolessons.spring.HomeWork1Spring.dto.EmployeeDTO;
+import ru.skyprolessons.spring.HomeWork1Spring.dto.EmployeeFullInfo;
 import ru.skyprolessons.spring.HomeWork1Spring.pojo.Employee;
-import ru.skyprolessons.spring.HomeWork1Spring.repository.EmployeeRepository;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface EmployeeService {
+    String startTest();
 
-    int getEmployeeCount();
+    Long getEmployeeCount();
+
+    List<EmployeeDTO> getAllEmployees();
 
     int getEmployeeSalarySum();
 
@@ -20,11 +24,15 @@ public interface EmployeeService {
 
     List<Employee> getEmployeesWithSalaryMoreThan(int salary);
 
-    Employee getEmployeeByID(int id);
+    Optional<Employee> getEmployeeByID(int id);
 
     void addEmployee(Employee employee);
 
     void editEmployee(int id, Employee employee);
 
-    void removeEmployee(int id);
+    void deleteEmployee(int id);
+
+    List<Employee> getEmployeesWithHighestSalary();
+
+    List<EmployeeFullInfo> findAllEmployeesFullInfo();
 }
