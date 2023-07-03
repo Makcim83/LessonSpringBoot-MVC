@@ -35,4 +35,6 @@ public interface EmployeeService {
     List<Employee> getEmployeesWithHighestSalary();
 
     List<EmployeeFullInfo> findAllEmployeesFullInfo();
+
+//    Long uploadFile(Long size);
 }

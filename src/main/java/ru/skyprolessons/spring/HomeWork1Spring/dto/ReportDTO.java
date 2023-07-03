@@ -6,6 +6,7 @@ import lombok.Setter;
 import ru.skyprolessons.spring.HomeWork1Spring.pojo.Report;
 
 import java.io.Serializable;
+import java.util.Optional;
 
 @NoArgsConstructor
 @Setter

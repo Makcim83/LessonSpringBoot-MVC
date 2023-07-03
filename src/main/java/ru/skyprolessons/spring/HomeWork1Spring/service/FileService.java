@@ -11,7 +11,7 @@ import java.util.Optional;
 
 public class FileService {
     final File file = new File("json.txt");
-    public void addReportInFile(Optional<Report> report) throws IOException {
+    public void addReportInFile(Report report) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             objectMapper.writeValue(file , report);

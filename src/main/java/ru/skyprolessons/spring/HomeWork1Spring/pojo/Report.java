@@ -15,8 +15,8 @@ public class Report {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer idReport;
-//    @Column(name = "departmentname")
-//    private String departmentName;
+    @Column(name = "departmentname")
+    private String departmentName;
     @Column(name = "countemployees")
     private Integer countEmployees;
     @Column(name = "maxsalary")
