@@ -2,7 +2,6 @@ package ru.skyprolessons.spring.HomeWork1Spring.repository;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
-import ru.skyprolessons.spring.HomeWork1Spring.dto.EmployeeFullInfo;
 import ru.skyprolessons.spring.HomeWork1Spring.pojo.Employee;
 
 import java.util.List;
@@ -36,6 +35,7 @@ public interface EmployeeRepository extends CrudRepository<Employee, Integer> {
     @Query(value = "SELECT * FROM employee e LEFT OUTER JOIN positioon p WHERE e.salary > ?1 ", nativeQuery = true)
     List<Employee> getEmployeesWithSalaryMoreThan(int salaryForCompare);
 
-    @Query(value = "SELECT a FROM Employee e LEFT OUTER JOIN Position p WHERE e.salary = (SELECT MAX(e.salary) FROM employee e) ", nativeQuery = true)
+    @Query(value = "SELECT a FROM Employee e LEFT OUTER JOIN Position p WHERE e.salary = " +
+            "(SELECT MAX(e.salary) FROM employee e) ", nativeQuery = true)
     List<Employee> getEmployeesWithHighestSalary();
 }

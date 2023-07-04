@@ -1,23 +1,20 @@
 package ru.skyprolessons.spring.HomeWork1Spring.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.ObjectCodec;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
-import ru.skyprolessons.spring.HomeWork1Spring.dto.EmployeeFullInfo;
-import ru.skyprolessons.spring.HomeWork1Spring.dto.ReportDTO;
-import ru.skyprolessons.spring.HomeWork1Spring.pojo.Employee;
 import ru.skyprolessons.spring.HomeWork1Spring.pojo.Report;
 import ru.skyprolessons.spring.HomeWork1Spring.repository.ReportRepository;
 
-import java.io.FileOutputStream;
+import java.io.File;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class ReportServiceImpl implements ReportService {
-
-//    FileService fileService = new FileService();
     private final ReportRepository reportRepository;
 
     public ReportServiceImpl(ReportRepository reportRepository) {
@@ -26,15 +23,15 @@ public class ReportServiceImpl implements ReportService {
 
     @Override
     public Optional<Report> getReportById(int id) {
-        Report report = null;
-
         return reportRepository.findById(id);
     }
 
     @Override
     public List<Report> getDepartmentsReports() {
         List<Report> result = new ArrayList<>();
-        reportRepository.getDepartmentsReports().forEach(result::add);
+        reportRepository
+                .getDepartmentsReports()
+                .forEach(result::add);
         return result;
     }
 
@@ -48,30 +45,27 @@ public class ReportServiceImpl implements ReportService {
     }
 
     @Override
-    public void addReportToFile(int id) throws IOException {
-        FileService fileService = new FileService();
+    public void addReportToFile(int id) {
         Report report = reportRepository
                 .findById(id)
                 .orElse(null);
-        fileService.addReportInFile(report);
+        try {
+            File file = new File("src/main/java/ru/skyprolessons/spring/homework1spring/files/json.txt");
+            FileService.addReportInFile(file, report);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-//
-//
-//    ReportDTO reportDTO = null;
-//        reportDTO.reportDTO(report);
-//
-//        try(
-//    FileOutputStream fileOutputStream = new FileOutputStream(fileService.toString());
-//    ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream))
-//
-//    {
-//
-//        objectOutputStream.writeObject(reportDTO);
-//    } catch(
-//    IOException e)
-//
-//    {
-//        e.printStackTrace();
-//    }
-//}
+
+    @Override
+    public Report getReportFromFile() throws JsonProcessingException {
+        File file = new File("src/main/java/ru/skyprolessons/spring/homework1spring/files/json.txt");
+        String jsonString;
+        jsonString = FileService.readTextFromFile(file);
+
+        ObjectMapper objectMapper = new ObjectMapper();
+        Report report = objectMapper.readValue(jsonString, Report.class);
+        System.out.println(report);
+        return report;
+    }
 }

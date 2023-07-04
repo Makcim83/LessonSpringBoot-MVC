@@ -23,11 +23,6 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public String startTest() {
         System.out.println("test - service class /add some employees/");
-//        employeeRepository.save(new Employee(1, "Катя", 90000));
-//        employeeRepository.save(new Employee(2, "Дима", 102000));
-//        employeeRepository.save(new Employee(3, "Олег", 80000));
-//        employeeRepository.save(new Employee(4, "Вика", 125000));
-
         employeeRepository.save(new Employee(1, "Катя", 90000, new Position(1, "pos1")));
         employeeRepository.save(new Employee(2, "Дима", 102000, new Position(1, "pos1")));
         employeeRepository.save(new Employee(3, "Олег", 80000, new Position(2, "pos2")));

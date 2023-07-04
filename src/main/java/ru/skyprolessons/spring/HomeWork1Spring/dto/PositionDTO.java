@@ -22,7 +22,7 @@ public class PositionDTO {
         return new PositionDTO();
     }
 
-    public Position toPosition(PositionDTO positionDTO) {
+    public Position fromPositionDTO(PositionDTO positionDTO) {
         Position position = new Position();
         position.setIdPosition(positionDTO.getId());
         position.setNamePosition(positionDTO.getName());

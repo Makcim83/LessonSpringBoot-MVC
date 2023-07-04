@@ -2,14 +2,16 @@ package ru.skyprolessons.spring.HomeWork1Spring.pojo;
 
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 
 @Entity
 @Table(name = "report")
 @NoArgsConstructor
 @AllArgsConstructor
-@Setter
-@Getter
+@Data
 public class Report {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

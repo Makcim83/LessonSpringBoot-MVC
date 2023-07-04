@@ -1,16 +1,13 @@
 package ru.skyprolessons.spring.HomeWork1Spring.dto;
 
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import ru.skyprolessons.spring.HomeWork1Spring.pojo.Report;
 
 import java.io.Serializable;
-import java.util.Optional;
 
 @NoArgsConstructor
-@Setter
-@Getter
+@Data
 public class ReportDTO implements Serializable {
     private String departmentName;
     private Integer countEmployees;
@@ -30,7 +27,7 @@ public class ReportDTO implements Serializable {
         this.avgSalary = avgSalary;
     }
 
-    public ReportDTO reportDTO(Report report) {
+    public ReportDTO fromReport(Report report) {
         ReportDTO reportDTO = new ReportDTO();
 //        reportDTO.setDepartmentName(report.getDepartmentName());
         reportDTO.setCountEmployees(report.getCountEmployees());
@@ -40,7 +37,7 @@ public class ReportDTO implements Serializable {
         return reportDTO;
     }
 
-    public Report report(ReportDTO reportDTO) {
+    public Report fromReportDTO(ReportDTO reportDTO) {
         Report report = new Report();
 //        report.setDepartmentName(reportDTO.getDepartmentName());
         report.setCountEmployees(reportDTO.getCountEmployees());

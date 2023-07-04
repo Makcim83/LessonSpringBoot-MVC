@@ -1,12 +1,9 @@
 package ru.skyprolessons.spring.HomeWork1Spring.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import ru.skyprolessons.spring.HomeWork1Spring.pojo.Employee;
 import ru.skyprolessons.spring.HomeWork1Spring.pojo.Position;
-
 
 @Getter
 @NoArgsConstructor
@@ -29,8 +26,6 @@ public class EmployeeFullInfo {
         employeeFullInfo.setNamePosition(employee.getPosition().getNamePosition());
         return employeeFullInfo;
     }
-
-
 
     public void setName(String name) {
         this.name = name;
