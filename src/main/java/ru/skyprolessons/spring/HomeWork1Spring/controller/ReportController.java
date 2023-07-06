@@ -3,6 +3,7 @@ package ru.skyprolessons.spring.HomeWork1Spring.controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import lombok.RequiredArgsConstructor;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import ru.skyprolessons.spring.HomeWork1Spring.pojo.Report;
 import ru.skyprolessons.spring.HomeWork1Spring.service.ReportService;
@@ -15,7 +16,9 @@ import java.util.Optional;
 @RequestMapping("/report")
 @RequiredArgsConstructor
 public class ReportController {
-    private final ReportService reportService;
+
+    @Autowired
+    ReportService reportService;
 
     @GetMapping(value = "/{id}")
     public Optional<Report> getReportById(@PathVariable int id) {

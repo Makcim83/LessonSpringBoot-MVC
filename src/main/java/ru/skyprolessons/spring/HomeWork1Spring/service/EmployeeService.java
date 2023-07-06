@@ -3,6 +3,7 @@ package ru.skyprolessons.spring.HomeWork1Spring.service;
 import ru.skyprolessons.spring.HomeWork1Spring.dto.EmployeeDTO;
 import ru.skyprolessons.spring.HomeWork1Spring.dto.EmployeeFullInfo;
 import ru.skyprolessons.spring.HomeWork1Spring.pojo.Employee;
+import ru.skyprolessons.spring.HomeWork1Spring.pojo.Report;
 
 import java.util.List;
 import java.util.Optional;
@@ -10,7 +11,7 @@ import java.util.Optional;
 public interface EmployeeService {
     String startTest();
 
-    Long getEmployeeCount();
+    Integer getEmployeeCount();
 
     List<EmployeeDTO> getAllEmployees();
 
@@ -35,4 +36,6 @@ public interface EmployeeService {
     List<Employee> getEmployeesWithHighestSalary();
 
     List<EmployeeFullInfo> findAllEmployeesFullInfo();
+
+    Report getCurrentReport();
 }

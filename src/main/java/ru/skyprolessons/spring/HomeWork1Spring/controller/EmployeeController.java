@@ -1,12 +1,14 @@
 package ru.skyprolessons.spring.HomeWork1Spring.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 
 import org.springframework.web.bind.annotation.*;
 import ru.skyprolessons.spring.HomeWork1Spring.dto.EmployeeDTO;
 import ru.skyprolessons.spring.HomeWork1Spring.dto.EmployeeFullInfo;
 import ru.skyprolessons.spring.HomeWork1Spring.pojo.Employee;
+import ru.skyprolessons.spring.HomeWork1Spring.pojo.Report;
 import ru.skyprolessons.spring.HomeWork1Spring.service.EmployeeService;
 
 import java.util.List;
@@ -17,7 +19,8 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class EmployeeController {
 
-    private final EmployeeService employeeService;
+    @Autowired
+    EmployeeService employeeService;
 
     @GetMapping("/starttest")
     public String startTest() {
@@ -30,7 +33,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/count")
-    public Long getEmployeeCount() {
+    public Integer getEmployeeCount() {
         return employeeService.getEmployeeCount();
     }
 
@@ -88,5 +91,10 @@ public class EmployeeController {
     @GetMapping(value = "/fullinfo")
     public List<EmployeeFullInfo> findAllEmployeesFullInfo() {
         return employeeService.findAllEmployeesFullInfo();
+    }
+
+    @PostMapping(value = "/report")
+    public Report getCurrentReport() {
+        return employeeService.getCurrentReport();
     }
 }
