@@ -1,7 +1,6 @@
 package ru.skyprolessons.spring.HomeWork1Spring.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.ObjectCodec;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
 import ru.skyprolessons.spring.HomeWork1Spring.pojo.Report;
@@ -16,6 +15,9 @@ import java.util.Optional;
 @Service
 public class ReportServiceImpl implements ReportService {
     private final ReportRepository reportRepository;
+
+    private static ObjectMapper objectMapper = new ObjectMapper();
+    private File fileForReports = new File("src/main/java/ru/skyprolessons/spring/homework1spring/files/json.txt");
 
     public ReportServiceImpl(ReportRepository reportRepository) {
         this.reportRepository = reportRepository;
@@ -49,9 +51,10 @@ public class ReportServiceImpl implements ReportService {
         Report report = reportRepository
                 .findById(id)
                 .orElse(null);
+
         try {
-            File file = new File("src/main/java/ru/skyprolessons/spring/homework1spring/files/json.txt");
-            FileService.addReportInFile(file, report);
+
+            FileService.addReportInFile(fileForReports, report);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -59,11 +62,10 @@ public class ReportServiceImpl implements ReportService {
 
     @Override
     public Report getReportFromFile() throws JsonProcessingException {
-        File file = new File("src/main/java/ru/skyprolessons/spring/homework1spring/files/json.txt");
-        String jsonString;
-        jsonString = FileService.readTextFromFile(file);
 
-        ObjectMapper objectMapper = new ObjectMapper();
+        String jsonString;
+        jsonString = FileService.readTextFromFile(fileForReports);
+
         Report report = objectMapper.readValue(jsonString, Report.class);
         System.out.println(report);
         return report;

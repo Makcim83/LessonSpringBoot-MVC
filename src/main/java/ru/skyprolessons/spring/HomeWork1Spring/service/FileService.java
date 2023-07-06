@@ -1,6 +1,8 @@
 package ru.skyprolessons.spring.HomeWork1Spring.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import ru.skyprolessons.spring.HomeWork1Spring.pojo.Report;
 
 
@@ -11,9 +13,12 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.stream.Collectors;
 
+@Service
 public class FileService {
+
+    private static ObjectMapper objectMapper;
+
     public static void addReportInFile(File file, Report report) throws IOException {
-        ObjectMapper objectMapper = new ObjectMapper();
         try {
             objectMapper.writeValue(file, report);
         } catch (IOException e) {
