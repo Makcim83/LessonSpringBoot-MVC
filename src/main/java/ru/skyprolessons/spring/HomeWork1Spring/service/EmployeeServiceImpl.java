@@ -5,6 +5,7 @@ import ru.skyprolessons.spring.HomeWork1Spring.dto.EmployeeDTO;
 import ru.skyprolessons.spring.HomeWork1Spring.dto.EmployeeFullInfo;
 import ru.skyprolessons.spring.HomeWork1Spring.pojo.Employee;
 import ru.skyprolessons.spring.HomeWork1Spring.pojo.Position;
+import ru.skyprolessons.spring.HomeWork1Spring.pojo.Report;
 import ru.skyprolessons.spring.HomeWork1Spring.repository.EmployeeRepository;
 
 import java.util.ArrayList;
@@ -23,11 +24,6 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public String startTest() {
         System.out.println("test - service class /add some employees/");
-//        employeeRepository.save(new Employee(1, "Катя", 90000));
-//        employeeRepository.save(new Employee(2, "Дима", 102000));
-//        employeeRepository.save(new Employee(3, "Олег", 80000));
-//        employeeRepository.save(new Employee(4, "Вика", 125000));
-
         employeeRepository.save(new Employee(1, "Катя", 90000, new Position(1, "pos1")));
         employeeRepository.save(new Employee(2, "Дима", 102000, new Position(1, "pos1")));
         employeeRepository.save(new Employee(3, "Олег", 80000, new Position(2, "pos2")));
@@ -36,8 +32,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public Long getEmployeeCount() {
-        return employeeRepository.count();
+    public Integer getEmployeeCount() {
+        return Math.toIntExact(employeeRepository.count());
     }
 
     @Override
@@ -110,5 +106,18 @@ public class EmployeeServiceImpl implements EmployeeService {
         return result.stream()
                 .map(EmployeeFullInfo::fromEmployee)
                 .toList();
+    }
+
+    public Report getCurrentReport() {
+        Report report = new Report();
+
+        report.setDepartmentName("departmentName");
+        report.setMaxSalary(getEmployeeSalaryMax());
+        report.setMinSalary(getEmployeeSalaryMin());
+        Integer count = getEmployeeCount();
+        report.setCountEmployees(count);
+        report.setAvgSalary((int) (getEmployeeSalarySum() / count));
+
+        return report;
     }
 }

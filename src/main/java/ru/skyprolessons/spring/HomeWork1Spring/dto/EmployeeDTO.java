@@ -1,7 +1,5 @@
 package ru.skyprolessons.spring.HomeWork1Spring.dto;
 
-import lombok.AllArgsConstructor;
-
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.Getter;
@@ -13,7 +11,6 @@ public class EmployeeDTO {
 //    private Integer id;
     private String name;
     private Integer salary;
-
 
     public static EmployeeDTO fromEmployee(Employee employee) {
         EmployeeDTO employeeDTO = new EmployeeDTO();

@@ -2,16 +2,14 @@ package ru.skyprolessons.spring.HomeWork1Spring.pojo;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity
 @Table(name = "position")
 @NoArgsConstructor
 @AllArgsConstructor
-@Setter
-@Getter
+@Data
 public class Position {
 
     @Id
